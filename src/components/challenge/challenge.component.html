@@ -1,0 +1,66 @@
+<div class="container mt-5">
+    <h2>Create a New Challenge</h2>
+  
+    <!-- Display error message if the form is invalid -->
+    <div *ngIf="challengeForm.invalid" class="alert alert-danger">
+      Please fill in all fields correctly.
+    </div>
+  
+    <!-- Challenge Form -->
+    <form [formGroup]="challengeForm" (ngSubmit)="onSubmit()">
+      <!-- Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          id="title"
+          class="form-control"
+          formControlName="title"
+          [ngClass]="{ 'is-invalid': challengeForm.controls['title'].invalid && challengeForm.controls['title'].touched }"
+        />
+        <div *ngIf="challengeForm.controls['title'].invalid && challengeForm.controls['title'].touched" class="invalid-feedback">
+          Title is required (min length: 3).
+        </div>
+      </div>
+  
+      <!-- Description -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          id="description"
+          class="form-control"
+          rows="4"
+          formControlName="description"
+          [ngClass]="{ 'is-invalid': challengeForm.controls['description'].invalid && challengeForm.controls['description'].touched }"
+        ></textarea>
+        <div *ngIf="challengeForm.controls['description'].invalid && challengeForm.controls['description'].touched" class="invalid-feedback">
+          Description is required (min length: 10).
+        </div>
+      </div>
+  
+      <!-- Difficulty -->
+      <div class="mb-3">
+        <label for="difficulty" class="form-label">Difficulty</label>
+        <select id="difficulty" class="form-control" formControlName="difficulty">
+          <option value="1">1 - Easy</option>
+          <option value="2">2 - Medium</option>
+          <option value="3">3 - Hard</option>
+          <option value="4">4 - Very Hard</option>
+          <option value="5">5 - Extreme</option>
+        </select>
+      </div>
+  
+      <!-- Status -->
+      <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select id="status" class="form-control" formControlName="status">
+          <option value="InProgress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" [disabled]="challengeForm.invalid">Create Challenge</button>
+    </form>
+  </div>
+  

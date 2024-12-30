@@ -1,0 +1,53 @@
+<div class="main-container">
+  <header class="welcome-header">
+    <h1>Welcome to Nemesis</h1>
+  </header>
+
+  <section class="content-section">
+    <h2>About Nemesis</h2>
+    <p>
+      Nemesis is your ultimate goal-tracking application. Track your challenges, set objectives, and achieve success!
+    </p>
+  </section>
+
+  <section class="features-section">
+    <h2>Features</h2>
+    <ul>
+      <li>Set personal goals and deadlines</li>
+      <li>Track progress in real-time</li>
+      <li>Collaborate with friends or teammates</li>
+    </ul>
+  </section>
+  
+  <section>  <!-- Input and Button Section -->
+    <div class="input-group">
+      <input
+        type="email"
+        [(ngModel)]="email"
+        placeholder="Enter your email"
+        class="email-input"
+      />
+      <button (click)="fetchData()" class="fetch-button">User Menu</button>
+    </div>
+    <!-- Error Message -->
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <div class="video-overlay" *ngIf="isLoading">
+      <video
+        id="loading-video"
+        muted
+        autoplay
+        playsinline
+        class="loading-video"
+      >
+        <source src="assets/TransitionNemesis.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+  
+  <footer class="main-footer">
+    <div>
+      <p>Thank you for visiting Nemesis! Start your journey today.</p>
+    </div>
+  </footer>
+</div>

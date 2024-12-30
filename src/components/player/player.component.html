@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+      <h2 class="text-center mb-4">User Profile</h2>
+  
+      <div *ngIf="user; else loading">
+        <div class="user-info">
+          <p><strong>Nickname:</strong> {{ user.nickname }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Points:</strong> {{ user.points }}</p>
+        </div>
+  
+        <div class="challenges">
+          <h3>Challenges:</h3>
+          <ul>
+            <li *ngFor="let challenge of user.challenges" class="challenge-item">
+              <span class="challenge-title">{{ challenge.title }}</span> - <span class="challenge-status">{{ challenge.status }}</span>
+            </li>
+          </ul>
+          <button class="btn btn-primary add-challenge-btn" (click)="navigateToChallengeForm()">Add Challenge</button>
+        </div>
+      </div>
+  
+      <ng-template #loading>
+        <div class="text-center">
+          <p class="loading-text">Loading user data...</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  
